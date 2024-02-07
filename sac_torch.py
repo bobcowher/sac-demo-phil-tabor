@@ -92,6 +92,7 @@ class Agent():
         critic_value = critic_value.view(-1)
 
         self.value.optimizer.zero_grad()
+
         value_target = critic_value - log_probs
         value_loss = 0.5 * F.mse_loss(value, value_target)
         value_loss.backward(retain_graph=True)
